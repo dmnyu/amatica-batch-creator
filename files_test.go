@@ -5,7 +5,7 @@ import "testing"
 var source = "test/simple-data"
 
 func TestDirectoriesExists(t *testing.T) {
-	t.Run("Test that direcotry exists", func(t *testing.T) {
+	t.Run("Test that directory exists", func(t *testing.T) {
 		if err := DirectoryExists(source); err != nil {
 			t.Errorf("DirectoryExists() error = %v", err)
 		}

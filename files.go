@@ -89,16 +89,19 @@ func SplitSourceFileSlice() {
 	}
 }
 
-func CopyFiles() {
+func CopyFiles() error {
 	for i, sourceFileSlice := range SourceFilesSlices {
 		fmt.Println("copying files in batch", i+1)
 		for _, sourceFile := range sourceFileSlice {
 			sourcePath := filepath.Join(SourceDirectory, sourceFile)
 			targetPath := filepath.Join(TargetBatchDirs[i], sourceFile)
 			fmt.Println(sourcePath + " -> " + targetPath)
-			copyFile(sourcePath, targetPath)
+			if err := copyFile(sourcePath, targetPath); err != nil {
+				return err
+			}
 		}
 	}
+	return nil
 }
 
 func copyFile(src string, dst string) error {

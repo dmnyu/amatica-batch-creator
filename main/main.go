@@ -70,5 +70,7 @@ func main() {
 	}
 
 	//copy the files
-	amatica_batch_creator.CopyFiles()
+	if err := amatica_batch_creator.CopyFiles(); err != nil {
+		fmt.Println("CopyFiles() Err = ", err.Error())
+	}
 }
